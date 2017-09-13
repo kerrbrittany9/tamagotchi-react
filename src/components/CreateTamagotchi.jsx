@@ -11,27 +11,34 @@ class CreateTamagotchi extends React.Component {
 
   newCreateTamagotchi(event) {
     event.preventDefault()
-    const { _name} = this.refs;
+    const { _name } = this.refs;
     var newTamagotchi = new Tamagotchi(_name.value);
-    this.props.onNewCreateTamagotchi(new Tamagotchi);
+    this.props.onNewCreateTamagotchi(newTamagotchi);
+    this.props.hideFormAfterSubmission();
   }
 
   render(){
     return (
       <div>
+
         <form onSubmit={this.newCreateTamagotchi}>
           <input
             ref="_name"
             type="text"
             id="name"
             placeholder="Tamagotchi Name"/>
-        </form>
-      </div>
-    );
-  }
+          <button type="submit">shimei</button>
+          </form>
 
-  CreateTamagotchi.propTypes = {
-    onNewCreateTamagotchi: PropTypes.func
-  }
-}
-export default CreateTamagotchi;
+          </div>
+        );
+      }
+    }
+
+    CreateTamagotchi.propTypes = {
+      onNewCreateTamagotchi: PropTypes.func,
+      hideFormAfterSubmission: PropTypes.func,
+
+    }
+
+    export default CreateTamagotchi;
