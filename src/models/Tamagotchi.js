@@ -11,5 +11,7 @@ class Tamagotchi {
   setTimeSinceBirth() {
     this.timeSinceBirth = this.timeBirth.fromNow(true);
   }
+
+
 }
 export default Tamagotchi;

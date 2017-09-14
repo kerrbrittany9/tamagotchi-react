@@ -16,7 +16,6 @@ class Tamagotchi extends React.Component {
   }
 
   componentDidMount() {
-    console.log("HELLO");
     this.timeSinceBirth = setInterval(() =>
     this.updateTamagotchiLife(),
     5000
@@ -35,10 +34,15 @@ class Tamagotchi extends React.Component {
     newMasterTamagotchi.forEach((creature) =>
       creature.setTimeSinceBirth()
   );
-    this.setState({masterTamagotchi: newMasterTamagotchi})
-    console.log(this.masterTamagotchi);
-
+    this.setState({masterTamagotchi: newMasterTamagotchi});
   }
+
+  tamagotchiDies() {
+    var newLife = this.state.life - 5;
+    console.log(newLife);
+    this.setState({life: newLife})
+  }
+
 
 
   render() {
