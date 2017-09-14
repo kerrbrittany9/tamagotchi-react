@@ -32,10 +32,6 @@ class TamagotchiDies extends React.Component {
     }
   }
 
-  componentDidUpdate() {
-    console.log("hi");
-  }
-
   componentWillUnmount(){
       clearInterval(this.life);
       alert("sorry your pet has died")
