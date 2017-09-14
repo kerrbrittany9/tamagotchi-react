@@ -9,7 +9,7 @@ class Tamagotchi {
   }
 
   setTimeSinceBirth() {
-    return this.timeBirth.fromNow(true);
+    this.timeSinceBirth = this.timeBirth.fromNow(true);
   }
 }
 export default Tamagotchi;
