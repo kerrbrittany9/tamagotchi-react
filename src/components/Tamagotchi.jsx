@@ -11,9 +11,16 @@ class Tamagotchi extends React.Component {
       masterTamagotchi: [],
     };
 
-    this.addNewCreatureToTamagotchi = this.addNewCreatureToTamagotchi.bind(this)
+    this.addNewCreatureToTamagotchi = this.addNewCreatureToTamagotchi.bind(this);
+    this.updateTamagatchiLife = this.updateTamagatchiLife.bind(this);
   }
 
+  realTime() {
+    this.timeSinceBirth = setInterval(() =>
+    this.updateTamagatchiLife(),
+    5000
+  );
+  }
 
   addNewCreatureToTamagotchi(newTamagotchi) {
     let newMasterTamagotchi = this.state.masterTamagotchi.slice();
@@ -21,6 +28,15 @@ class Tamagotchi extends React.Component {
     this.setState({masterTamagotchi: newMasterTamagotchi});
     console.log(this.state.masterTamagotchi);
   }
+
+  updateTamagatchiLife() {
+    let newMasterTamagotchi = this.state.masterTamagotchi.slice();
+    newMasterTamagotchi.forEach((creature) =>
+    creature.setTimeSinceBirth()
+  );
+    this.setState({masterTamagotchi: newMasterTamagotchi})
+  }
+
 
   render() {
     return (
