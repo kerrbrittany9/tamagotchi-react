@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from  "prop-types";
 import TamagotchiControlTop from "./TamagotchiControlTop";
 import TamagotchiList from "./TamagotchiList";
-
 class Tamagotchi extends React.Component {
 
   constructor(props) {
@@ -22,6 +21,7 @@ class Tamagotchi extends React.Component {
   );
   }
 
+
   addNewCreatureToTamagotchi(newTamagotchi) {
     let newMasterTamagotchi = this.state.masterTamagotchi.slice();
     newMasterTamagotchi.push(newTamagotchi);
@@ -40,6 +40,7 @@ class Tamagotchi extends React.Component {
   render() {
     return (
       <div>
+      
         <TamagotchiControlTop addNewCreatureToTamagotchi= {this.addNewCreatureToTamagotchi}/>
         <TamagotchiList
         creatures={this.state.masterTamagotchi}/>

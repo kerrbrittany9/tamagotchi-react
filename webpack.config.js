@@ -44,6 +44,10 @@ module.exports = {
               "react-hot-loader/babel"
             ]
           }
+          test: /\.(jpe?g|png|gif|svg)$/i,
+          use: [
+            'url-loader?limit=10000'
+          ]
         }
       ]
     },
