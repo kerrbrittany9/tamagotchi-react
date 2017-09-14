@@ -1,11 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+
 class TamagotchiDies extends React.Component {
 
 
   constructor(props) {
     super(props);
+    this.addFood = this.addFood.bind(this);
     this.reduceLife = this.reduceLife.bind(this);
     this.state = {
       life: 100
@@ -22,19 +24,33 @@ class TamagotchiDies extends React.Component {
     console.log("hello");
     var newLife = this.state.life - 5;
     console.log(newLife);
-
     this.setState({life: newLife});
+    if (newLife <= 0) {
+      this.componentWillUnmount();
+    }
   }
 
   componentDidUpdate() {
     console.log("hi");
-
   }
+
+  componentWillUnmount(){
+      clearInterval(this.life);
+      alert("sorry your pet has died")
+    }
+
+    addFood(event) {
+      var newFood = this.state.life + 5;
+      console.log("clicked");
+      this.setState({life: newFood});
+    }
 
   render() {
     return (
       <div>
         <p>Life Force: {this.state.life}</p>
+        <Feed addFood= {this.addFood}/>
+        <button onClick={this.addFood}>Feed me!</button>
       </div>
     )
   }
@@ -46,7 +62,9 @@ class TamagotchiDies extends React.Component {
 TamagotchiDies.propTypes = {
   componentDidMount: PropTypes.func,
   life: PropTypes.number,
-  reduceLife: PropTypes.func
+  reduceLife: PropTypes.func,
+  name: PropTypes.string,
+  addFood: PropTypes.func
 }
 
 export default TamagotchiDies;
