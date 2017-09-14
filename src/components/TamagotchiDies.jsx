@@ -7,6 +7,8 @@ class TamagotchiDies extends React.Component {
 
   constructor(props) {
     super(props);
+    this.addRest = this.addRest.bind(this);
+    this.addPlay = this.addPlay.bind(this);
     this.addFood = this.addFood.bind(this);
     this.reduceLife = this.reduceLife.bind(this);
     this.state = {
@@ -45,12 +47,23 @@ class TamagotchiDies extends React.Component {
       this.setState({life: newFood});
     }
 
+    addRest(event) {
+      var newRest = this.state.life + 10;
+      this.setState({life: newRest});
+    }
+
+    addPlay(event) {
+      var newPlay = this.state.life + 3;
+      this.setState({life: newPlay});
+    }
+
   render() {
     return (
       <div>
         <p>Life Force: {this.state.life}</p>
-        <Feed addFood= {this.addFood}/>
         <button onClick={this.addFood}>Feed me!</button>
+        <button onClick={this.addRest}>Sleep </button>
+        <button onClick={this.addPlay}>Play! </button>
       </div>
     )
   }
