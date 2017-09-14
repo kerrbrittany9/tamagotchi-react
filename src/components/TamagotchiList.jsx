@@ -1,13 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
-
+import TamagotchiDetail from "./TamagotchiDetail";
 
 function TamagotchiList(props){
   console.log(props.creatures);
   return (
     <div>
       <h3>{props.creatures.map((creature, index) =>
-       <p>{creature.name}</p>
+        <TamagotchiDetail
+       name= {creature.name}
+       timeSinceBirth={creature.timeSinceBirth}
+       life={creature.life}
+       key={index}/>
       )}
       </h3>
       <hr/>
