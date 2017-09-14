@@ -22,7 +22,7 @@ class TamagotchiDies extends React.Component {
     console.log("hello");
     var newLife = this.state.life - 5;
     console.log(newLife);
-    this.componentDidMount(newLife);
+
     this.setState({life: newLife});
   }
 

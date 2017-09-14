@@ -37,14 +37,6 @@ class Tamagotchi extends React.Component {
     this.setState({masterTamagotchi: newMasterTamagotchi});
   }
 
-  tamagotchiDies() {
-    var newLife = this.state.life - 5;
-    console.log(newLife);
-    this.setState({life: newLife})
-  }
-
-
-
   render() {
     return (
       <div>
