@@ -1,6 +1,6 @@
 import React from "react";
-import CreateTamagotchi from "./CreateTamagotchi";
 import PropTypes from  "prop-types";
+import TamagotchiControlTop from "./TamagotchiControlTop";
 import TamagotchiList from "./TamagotchiList";
 
 class Tamagotchi extends React.Component {
@@ -9,50 +9,34 @@ class Tamagotchi extends React.Component {
     super(props);
     this.state = {
       masterTamagotchi: [],
-      formVisibleOnPage: false
     };
-    this.showForm = this.showForm.bind(this);
-    this.hideForm = this.hideForm.bind(this);
+
     this.addNewCreatureToTamagotchi = this.addNewCreatureToTamagotchi.bind(this)
   }
 
-  showForm() {
-    this.setState({formVisibleOnPage: true});
-  }
-
-  hideForm() {
-    this.setState({formVisibleOnPage: false});
-  }
 
   addNewCreatureToTamagotchi(newTamagotchi) {
     let newMasterTamagotchi = this.state.masterTamagotchi.slice();
     newMasterTamagotchi.push(newTamagotchi);
-    console.log(this.state.masterTamagotchi);
     this.setState({masterTamagotchi: newMasterTamagotchi});
-  };
+    console.log(this.state.masterTamagotchi);
+  }
 
-  render(){
-    const formVisibleOnPage = this.state.formVisibleOnPage;
-    let formAreaContent = null;
-    if (this.state.formVisibleOnPage) {
-      formAreaContent = <CreateTamagotchi onNewCreateTamagotchi={this.addNewCreatureToTamagotchi}
-      hideFormAfterSubmission = {this.hideForm}/>
-    } else {
-      formAreaContent = <button onClick={this.showForm.bind(this)}>New Tamagotchi</button>;
-
-    }
-
+  render() {
     return (
       <div>
-        {formAreaContent}
-        <TamagotchiList/>
+        <TamagotchiControlTop addNewCreatureToTamagotchi= {this.addNewCreatureToTamagotchi}/>
+        <TamagotchiList
+        creatures={this.state.masterTamagotchi}/>
       </div>
     )
+  }
+
   };
-}
+
 
 Tamagotchi.propTypes = {
-  onNewCreateTamagotchi: PropTypes.func,
+  addNewCreatureToTamagotchi: PropTypes.func,
 }
 
 export default Tamagotchi;

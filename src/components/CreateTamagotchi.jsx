@@ -6,22 +6,23 @@ class CreateTamagotchi extends React.Component {
 
   constructor(props){
     super(props);
-    this.newCreateTamagotchi = this.newCreateTamagotchi.bind(this);
+    this.prepareTamagotchiCreation = this.prepareTamagotchiCreation.bind(this);
   }
 
-  newCreateTamagotchi(event) {
+  prepareTamagotchiCreation(event) {
     event.preventDefault()
     const { _name } = this.refs;
     var newTamagotchi = new Tamagotchi(_name.value);
-    this.props.onNewCreateTamagotchi(newTamagotchi);
+    this.props.addNewCreatureToTamagotchi(newTamagotchi);
     this.props.hideFormAfterSubmission();
+    console.log(newTamagotchi.name);
   }
 
   render(){
     return (
       <div>
 
-        <form onSubmit={this.newCreateTamagotchi}>
+        <form onSubmit={this.prepareTamagotchiCreation}>
           <input
             ref="_name"
             type="text"
@@ -36,7 +37,7 @@ class CreateTamagotchi extends React.Component {
     }
 
     CreateTamagotchi.propTypes = {
-      onNewCreateTamagotchi: PropTypes.func,
+      addNewCreatureToTamagotchi: PropTypes.func,
       hideFormAfterSubmission: PropTypes.func,
 
     }
